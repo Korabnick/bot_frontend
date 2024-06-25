@@ -1,0 +1,24 @@
+
+version: '3.9'
+
+services:
+  bot:
+    container_name: bot
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    ports:
+      - "8005:8005"
+    command: scripts/web/startup.sh -m -l
+    restart: on-failure
+    env_file:
+      - ./core/.env
+    volumes:
+      - .:/code
+      - ./configs:/code/configs
+    networks:
+      - count_calories
+
+networks:
+  count_calories:
+    external: True
