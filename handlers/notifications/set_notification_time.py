@@ -52,11 +52,11 @@ async def set_minute(message: types.Message, state: FSMContext):
                 method='POST'
         ) as response:
             if response.status == 200:
+                await state.clear()
                 await message.answer(
                     text=f"Notification time set to {hour:02d}:{minute:02d}.",
                     reply_markup=get_main_keyboard()
                 )
-                await state.clear()
             else:
                 await message.answer(
                     text="An error occurred while setting the notification time. Please try again.",

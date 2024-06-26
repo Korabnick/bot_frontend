@@ -12,7 +12,7 @@ state_to_keyboard = {
     'NotificationState:set_time': get_main_keyboard(),
     'CaloriesState:choose_period': get_stats_keyboard(),
     'CaloriesState:enter_calories': go_back_keyboard(),
-    MainState.start_menu: get_main_keyboard(),
+    MainState.start_menu: get_main_keyboard(),  
 }
 
 state_to_message = {

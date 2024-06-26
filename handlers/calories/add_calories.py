@@ -40,18 +40,18 @@ async def save_calories(message: types.Message, state: FSMContext) -> None:
                 method='POST'
         ) as response:
             if response.status == 201:
-                await state.set_state(CaloriesState.done)
+                await state.clear()
                 await message.answer(
                     f'Entered {calories} calories.',
                     reply_markup=get_main_keyboard()
-                    )
+                )
             else:
                 await message.answer(
                     'An error has occurred. Please try again.',
                     reply_markup=go_back_keyboard()
-                    )
+                )
     else:
         await message.answer(
             'Please enter a number.',
             reply_markup=go_back_keyboard()
-            )
+        )
