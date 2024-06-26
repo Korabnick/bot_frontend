@@ -37,6 +37,7 @@ async def show_period_stats(message: types.Message, state: FSMContext) -> None:
         ) as response:
             print(f"Response status: {response.status}")
             if response.status == 200:
+                await state.clear()
                 stats = await response.json()
                 print(f"Response data: {stats}")
 
